@@ -44,6 +44,7 @@ trait CanHaveL1PrefetcherModule extends HasHellaCacheModule { this: RocketTileMo
     dmem.req.bits.no_alloc := false.B
     dmem.req.bits.no_xcpt := false.B
     dmem.req.bits.data := DontCare
+    dmem.req.bits.dv := DontCare
     dmem.req.bits.mask := 0.U
     dmem.s1_data.data := DontCare
     dmem.s1_data.mask := 0.U
