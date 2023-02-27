@@ -42,6 +42,7 @@ module ModelL1PrefetcherHarness #(
   input  [SIZE_BITS-1:0] cpu_req_bits_size,
   input                  cpu_req_bits_signed,
   input  [1:0]           cpu_req_bits_dprv,
+  input                  cpu_req_bits_dv,
   input                  cpu_miss, // Core request from 2 cycles ago has missed
 
   input                  dmem_req_ready,
