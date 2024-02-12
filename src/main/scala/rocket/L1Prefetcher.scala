@@ -10,7 +10,7 @@ import chisel3._
 import chisel3.util._
 import chisel3.experimental.IntParam
 
-import freechips.rocketchip.config._
+import org.chipsalliance.cde.config._
 import freechips.rocketchip.tile._
 import freechips.rocketchip.subsystem.CacheBlockBytes
 
@@ -83,7 +83,7 @@ abstract class L1Prefetcher(implicit p: Parameters) extends CoreModule()(p) {
  * Naive implementation of the one-block prefetch-on-miss scheme
  */
 class ExampleL1Prefetcher(implicit p: Parameters) extends L1Prefetcher {
-
+  
   val s1_valid = RegNext(io.cpu.req.valid, false.B)
   val s1_req = RegEnable(io.cpu.req.bits, io.cpu.req.valid)
   val s1_addr = s1_req.addr(coreMaxAddrBits-1, lgCacheBlockBytes)
@@ -108,6 +108,7 @@ class ExampleL1Prefetcher(implicit p: Parameters) extends L1Prefetcher {
   io.dmem.req.bits.addr := s2_req.addr
   io.dmem.req.bits.write := isWrite(s2_req.cmd)
 
+  
   dontTouch(io.dmem.nack)
 }
 
